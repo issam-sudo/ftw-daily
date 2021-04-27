@@ -157,7 +157,7 @@
     /* Map is fixed so that it doesn't scroll along search results */
     position: fixed;
     top: var(--topbarHeightDesktop);
-    right: 0;
+    left: 0;
 
     /* Fixed content needs width relative to viewport */
     width: 50vw;
@@ -165,6 +165,6 @@
   }
 
   @media (--viewportLarge) {
-    width: 37.5vw;
+    width: 37vw;
   }
 }

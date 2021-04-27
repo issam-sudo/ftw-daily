@@ -237,7 +237,7 @@ class MainPanel extends Component {
           searchInProgress={searchInProgress}
           searchListingsError={searchListingsError}
           {...propsForSecondaryFiltersToggle}
-        >
+         >
           {primaryFilters.map(config => {
             return (
               <FilterComponent

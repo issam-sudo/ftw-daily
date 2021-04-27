@@ -527,6 +527,13 @@ export const requestPublishListingDraft = listingId => (dispatch, getState, sdk)
   return sdk.ownListings
     .publishDraft({ id: listingId }, { expand: true })
     .then(response => {
+      sdk.ownListings.close({
+        id: listingId 
+      }, {
+        expand: true
+      }).then(res => {
+        // res.data
+      });
       // Add the created listing to the marketplace data
       dispatch(addMarketplaceEntities(response));
       dispatch(publishListingSuccess(response));

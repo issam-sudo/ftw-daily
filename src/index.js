@@ -16,6 +16,7 @@
 import 'core-js/features/map';
 import 'core-js/features/set';
 import 'raf/polyfill';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

@@ -79,7 +79,10 @@ export const WithTransitions = {
     transaction: createTransaction({
       customer: createUser('user1'),
       provider: createUser('user2'),
-      listing: createListing('Listing'),
+      listing: createListing('Listing', {
+        state: LISTING_STATE_PENDING_APPROVAL,
+      }),
+    
       transitions: [
         // this should not be visible in the feed
         createTxTransition({
@@ -121,7 +124,9 @@ export const WithMessagesTransitionsAndReviews = {
     transaction: createTransaction({
       customer: createUser('user1'),
       provider: createUser('user2'),
-      listing: createListing('Listing'),
+      listing: createListing('Listing', {
+        state: LISTING_STATE_PENDING_APPROVAL,
+      }),
       lastTransition: TRANSITION_REVIEW_2_BY_CUSTOMER,
       transitions: [
         createTxTransition({
@@ -210,7 +215,9 @@ export const WithAReviewFromBothUsers = {
     transaction: createTransaction({
       customer: createUser('user1'),
       provider: createUser('user2'),
-      listing: createListing('Listing'),
+      listing:createListing('Listing', {
+        state: LISTING_STATE_PENDING_APPROVAL,
+      }) ,
       reviews: [
         createReview(
           'review1',
@@ -303,7 +310,9 @@ class PagedFeed extends Component {
       lastTransition: TRANSITION_COMPLETE,
       lastTransitionedAt: dates[5],
       transitions: [trans1, trans2, trans3, trans4],
-      listing: createListing('listing'),
+      listing: createListing('Listing', {
+        state: LISTING_STATE_PENDING_APPROVAL,
+      }),
       customer,
       provider,
     });

@@ -91,7 +91,7 @@ const AmenitiesFilterPlain = withRouter(props => {
       onSubmit={values => {
         handleSubmit(values, history);
       }}
-      showAsPopup={false}
+      showAsPopup={true}
       liveEdit={true}
       options={options}
       initialValues={initialValues}

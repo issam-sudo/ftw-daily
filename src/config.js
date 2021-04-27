@@ -102,7 +102,7 @@ const siteTwitterHandle = '@sharetribe';
 const siteInstagramPage = null;
 
 // Facebook page is used in SEO schema (http://schema.org/Organization)
-const siteFacebookPage = 'https://www.facebook.com/Sharetribe/';
+const siteFacebookPage = 'https://www.facebook.com/fmj/';
 
 // Social logins & SSO
 
@@ -222,7 +222,7 @@ const config = {
     streetAddress,
   },
   siteTitle,
-  siteFacebookPage,
+  siteFacebookPage:siteFacebookPage,
   siteInstagramPage,
   siteTwitterHandle,
   facebookAppId,

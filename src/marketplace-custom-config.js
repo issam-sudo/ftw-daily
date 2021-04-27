@@ -96,7 +96,7 @@ export const filters = [
     id: 'amenities',
     label: 'Amenities',
     type: 'SelectMultipleFilter',
-    group: 'secondary',
+    group: 'primary',
     queryParamNames: ['pub_amenities'],
     config: {
       // Optional modes: 'has_all', 'has_any'

@@ -170,23 +170,8 @@ export class SearchPageComponent extends Component {
           currentSearchParams={urlQueryParams}
         />
         <div className={css.container}>
-          <MainPanel
-            urlQueryParams={validQueryParams}
-            listings={listings}
-            searchInProgress={searchInProgress}
-            searchListingsError={searchListingsError}
-            searchParamsAreInSync={searchParamsAreInSync}
-            onActivateListing={onActivateListing}
-            onManageDisableScrolling={onManageDisableScrolling}
-            onOpenModal={this.onOpenMobileModal}
-            onCloseModal={this.onCloseMobileModal}
-            onMapIconClick={onMapIconClick}
-            pagination={pagination}
-            searchParamsForPagination={parse(location.search)}
-            showAsModalMaxWidth={MODAL_BREAKPOINT}
-            history={history}
-          />
-          <ModalInMobile
+          
+        <ModalInMobile
             className={css.mapPanel}
             id="SearchPage.map"
             isModalOpenOnMobile={this.state.isSearchMapOpenOnMobile}
@@ -213,6 +198,23 @@ export class SearchPageComponent extends Component {
               ) : null}
             </div>
           </ModalInMobile>
+          <MainPanel
+            urlQueryParams={validQueryParams}
+            listings={listings}
+            searchInProgress={searchInProgress}
+            searchListingsError={searchListingsError}
+            searchParamsAreInSync={searchParamsAreInSync}
+            onActivateListing={onActivateListing}
+            onManageDisableScrolling={onManageDisableScrolling}
+            onOpenModal={this.onOpenMobileModal}
+            onCloseModal={this.onCloseMobileModal}
+            onMapIconClick={onMapIconClick}
+            pagination={pagination}
+            searchParamsForPagination={parse(location.search)}
+            showAsModalMaxWidth={MODAL_BREAKPOINT}
+            history={history}
+          />
+         
         </div>
       </Page>
     );

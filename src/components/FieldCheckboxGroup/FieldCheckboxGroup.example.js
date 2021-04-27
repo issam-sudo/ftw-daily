@@ -92,7 +92,10 @@ const formComponent = country => props => (
           <FormSpy onChange={onChange} subscription={{ values: true, dirty: true }} />
           <FieldCheckboxGroup {...componentProps} />
 
-          <Button style={{ marginTop: 24 }} type="submit" disabled={submitDisabled}>
+          <Button      onSubmit={e => {
+            e.preventDefault();
+            handleSubmit(e);
+          }} style={{ marginTop: 24 }} type="submit" disabled={submitDisabled}>
             Submit
           </Button>
         </form>

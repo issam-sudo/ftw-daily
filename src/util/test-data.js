@@ -9,7 +9,7 @@ import {
   TX_TRANSITION_ACTOR_CUSTOMER,
   TX_TRANSITION_ACTOR_PROVIDER,
 } from '../util/transaction';
-import { LISTING_STATE_PUBLISHED, TIME_SLOT_DAY } from '../util/types';
+import { LISTING_STATE_PENDING_APPROVAL, LISTING_STATE_PUBLISHED, TIME_SLOT_DAY } from '../util/types';
 
 const { UUID, LatLng, Money } = sdkTypes;
 
@@ -103,7 +103,7 @@ export const createListing = (id, attributes = {}, includes = {}) => ({
     description: `${id} description`,
     geolocation: new LatLng(40, 60),
     deleted: false,
-    state: LISTING_STATE_PUBLISHED,
+    state: LISTING_STATE_PENDING_APPROVAL,
     price: new Money(5500, 'USD'),
     publicData: {},
     ...attributes,
