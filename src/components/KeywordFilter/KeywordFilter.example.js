@@ -26,7 +26,7 @@ const KeywordFilterPopup = withRouter(props => {
       label="Keyword"
       onSubmit={values => handleSubmit(values, history)}
       showAsPopup={true}
-      liveEdit={false}
+      liveEdit={true}
       initialValues={initialValues}
       contentPlacementOffset={-14}
     />
@@ -55,7 +55,7 @@ const KeywordFilterPlain = withRouter(props => {
       onSubmit={values => {
         handleSubmit(values, history);
       }}
-      showAsPopup={false}
+      showAsPopup={true}
       liveEdit={true}
       initialValues={initialValues}
     />
