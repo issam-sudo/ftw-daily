@@ -4,7 +4,7 @@ import { intlShape } from '../../util/reactIntl';
 import * as validators from '../../util/validators';
 import { FieldSelect, FieldTextInput } from '../../components';
 
-import merchantCategoryCodesUS from './merchantCategoryCodesUS';
+import merchantOrientationCodesUS from './merchantOrientationCodesUS';
 import css from './PayoutDetailsForm.module.css';
 
 const PayoutDetailsBusinessProfile = props => {
@@ -28,8 +28,8 @@ const PayoutDetailsBusinessProfile = props => {
     intl.formatMessage({ id: 'PayoutDetailsForm.businessURLRequired' })
   );
 
-  // By default, all merchant category codes (MCC) are listed in the select field. You can edit the
-  // merchantCategoryCodesUS.js and remove the codes that are not relevant to your marketplace or use a hard-coded
+  // By default, all merchant Orientation codes (MCC) are listed in the select field. You can edit the
+  // merchantOrientationCodesUS.js and remove the codes that are not relevant to your marketplace or use a hard-coded
   // value if there is only one code you want to use.
 
   return isBusinessProfileNeeded ? (
@@ -47,9 +47,9 @@ const PayoutDetailsBusinessProfile = props => {
           <option disabled value="">
             {mccPlaceholder}
           </option>
-          {merchantCategoryCodesUS.map(merchantCategory => (
-            <option key={merchantCategory.category} value={merchantCategory.mcc}>
-              {merchantCategory.label}
+          {merchantOrientationCodesUS.map(merchantOrientation => (
+            <option key={merchantOrientation.Orientation} value={merchantOrientation.mcc}>
+              {merchantOrientation.label}
             </option>
           ))}
         </FieldSelect>

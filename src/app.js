@@ -20,6 +20,8 @@ import config from './config';
 
 // Flex template application uses English translations as default.
 import defaultMessages from './translations/en.json';
+import defaultMessagesEs from './translations/es.json';
+import defaultMessagesDe from './translations/de.json';
 
 // If you want to change the language, change the imports to match the wanted locale:
 //   1) Change the language in the config.js file!
@@ -56,11 +58,19 @@ const addMissingTranslations = (sourceLangTranslations, targetLangTranslations) 
   return missingKeys.reduce(addMissingTranslation, targetLangTranslations);
 };
 
-const isDefaultLanguageInUse = config.locale === 'en';
+var messages = defaultMessagesEs;
 
-const messages = isDefaultLanguageInUse
-  ? defaultMessages
-  : addMissingTranslations(defaultMessages, messagesInLocale);
+ if ( localStorage.getItem('lng')  ==="fr") {
+     messages = messagesInLocale;
+ } else  if ( localStorage.getItem('lng')  ==="es") {
+     messages = defaultMessagesEs;
+ }else  if ( localStorage.getItem('lng')  ==="en") {
+  messages = defaultMessages;
+}else  if ( localStorage.getItem('lng')  ==="de") {
+  messages = defaultMessagesDe;
+}
+ 
+
 
 const isTestEnv = process.env.NODE_ENV === 'test';
 

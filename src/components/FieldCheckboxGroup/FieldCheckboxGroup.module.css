@@ -6,6 +6,8 @@
 
 .list {
   margin: 0;
+  overflow: overlay;
+  max-height: 50vh;
 }
 
 .twoColumns {

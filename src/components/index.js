@@ -165,6 +165,10 @@ export { default as EditListingLocationPanel } from './EditListingLocationPanel/
 export { default as EditListingPhotosPanel } from './EditListingPhotosPanel/EditListingPhotosPanel';
 export { default as EditListingPoliciesPanel } from './EditListingPoliciesPanel/EditListingPoliciesPanel';
 export { default as EditListingPricingPanel } from './EditListingPricingPanel/EditListingPricingPanel';
+export { default as EditListingFramePanel } from './EditListingFrameForm/EditListingFramePanel';
+export { default as EditListingSizePanel } from './EditListingSizeForm/EditListingSizePanel';
+export { default as EditListingMediumPanel } from './EditListingMediumForm/EditListingMediumPanel';
+
 export { default as EditListingWizard } from './EditListingWizard/EditListingWizard';
 export { default as Footer } from './Footer/Footer';
 export { default as SectionHero } from './SectionHero/SectionHero';

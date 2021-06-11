@@ -21,11 +21,16 @@ import { StripeConnectAccountForm } from '../../forms';
 import EditListingWizardTab, {
   AVAILABILITY,
   DESCRIPTION,
+  FRAME,
+  SIZE,
+  MEDIUM,
   FEATURES,
+
   POLICY,
   LOCATION,
   PRICING,
   PHOTOS,
+   
 } from './EditListingWizardTab';
 import css from './EditListingWizard.module.css';
 
@@ -38,7 +43,11 @@ const availabilityMaybe = config.enableAvailability ? [AVAILABILITY] : [];
 // and listing publishing happens after last panel.
 export const TABS = [
   DESCRIPTION,
+  FRAME,
+  SIZE,
+  MEDIUM,
   FEATURES,
+
   POLICY,
   LOCATION,
   PRICING,
@@ -56,8 +65,15 @@ const tabLabel = (intl, tab) => {
   let key = null;
   if (tab === DESCRIPTION) {
     key = 'EditListingWizard.tabLabelDescription';
-  } else if (tab === FEATURES) {
+  }  else if (tab === FRAME) {
+    key = 'EditListingWizard.tabLabelFrame';
+  }  else if (tab === SIZE) {
+    key = 'EditListingWizard.tabLabelSize';
+  }  else if (tab === MEDIUM) {
+    key = 'EditListingWizard.tabLabelMedium';
+  }else if (tab === FEATURES) {
     key = 'EditListingWizard.tabLabelFeatures';
+
   } else if (tab === POLICY) {
     key = 'EditListingWizard.tabLabelPolicy';
   } else if (tab === LOCATION) {
@@ -81,7 +97,7 @@ const tabLabel = (intl, tab) => {
  *
  * @return true if tab / step is completed.
  */
-const tabCompleted = (tab, listing) => {
+ const tabCompleted = (tab, listing) => {
   const {
     availabilityPlan,
     description,
@@ -95,12 +111,24 @@ const tabCompleted = (tab, listing) => {
   switch (tab) {
     case DESCRIPTION:
       return !!(description && title);
+      case FRAME:
+        return !!(publicData && publicData.frame);
+        case SIZE:
+          return !!(publicData && publicData.size);
+          case MEDIUM:
+            return !!(publicData && publicData.medium);
     case FEATURES:
       return !!(publicData && publicData.amenities);
+
     case POLICY:
       return !!(publicData && typeof publicData.rules !== 'undefined');
     case LOCATION:
-      return !!(geolocation && publicData && publicData.location && publicData.location.address);
+      return !!(
+        geolocation &&
+        publicData &&
+        publicData.location &&
+        publicData.location.address
+      );
     case PRICING:
       return !!price;
     case AVAILABILITY:

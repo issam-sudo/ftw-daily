@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { propTypes } from '../../util/types';
 import { maxLength, required, composeValidators } from '../../util/validators';
 import { Form, Button, FieldTextInput } from '../../components';
-import CustomCategorySelectFieldMaybe from './CustomCategorySelectFieldMaybe';
+import CustomOrientationSelectFieldMaybe from './CustomOrientationSelectFieldMaybe';
 
 import css from './EditListingDescriptionForm.module.css';
 
@@ -109,9 +109,9 @@ const EditListingDescriptionFormComponent = props => (
             validate={composeValidators(required(descriptionRequiredMessage))}
           />
 
-          <CustomCategorySelectFieldMaybe
-            id="category"
-            name="category"
+          <CustomOrientationSelectFieldMaybe
+            id="Orientation"
+            name="Orientation"
             categories={categories}
             intl={intl}
           />

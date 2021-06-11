@@ -33,12 +33,12 @@ const AVATAR_IMAGE_VARIANTS = [
 ];
 
 export const AvatarComponent = props => {
-  const { rootClassName, className, user, renderSizes, disableProfileLink, intl } = props;
+  const { rootClassName, className, user, renderSizes, disableProfileLink, intl , lng } = props;
   const classes = classNames(rootClassName || css.root, className);
 
   const userIsCurrentUser = user && user.type === 'currentUser';
   const avatarUser = userIsCurrentUser ? ensureCurrentUser(user) : ensureUser(user);
-
+  
   const isBannedUser = avatarUser.attributes.banned;
   const isDeletedUser = avatarUser.attributes.deleted;
 

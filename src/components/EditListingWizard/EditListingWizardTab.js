@@ -17,12 +17,18 @@ import {
   EditListingPhotosPanel,
   EditListingPoliciesPanel,
   EditListingPricingPanel,
+  EditListingFramePanel,
+  EditListingMediumPanel,
+  EditListingSizePanel,
 } from '../../components';
 
 import css from './EditListingWizard.module.css';
 
 export const AVAILABILITY = 'availability';
 export const DESCRIPTION = 'description';
+export const FRAME = 'frame';
+export const SIZE = 'size';
+export const MEDIUM = 'medium';
 export const FEATURES = 'features';
 export const POLICY = 'policy';
 export const LOCATION = 'location';
@@ -32,6 +38,9 @@ export const PHOTOS = 'photos';
 // EditListingWizardTab component supports these tabs
 export const SUPPORTED_TABS = [
   DESCRIPTION,
+  FRAME,
+  SIZE,
+  MEDIUM,
   FEATURES,
   POLICY,
   LOCATION,
@@ -164,6 +173,49 @@ const EditListingWizardTab = props => {
       return (
         <EditListingDescriptionPanel
           {...panelProps(DESCRIPTION)}
+          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
+          onSubmit={values => {
+            onCompleteEditListingWizardTab(tab, values);
+          }}
+        />
+      );
+    }
+    case FRAME: {
+      const submitButtonTranslationKey = isNewListingFlow
+        ? 'EditListingWizard.saveNewFrame'
+        : 'EditListingWizard.saveEditFrame';
+      return (
+        <EditListingFramePanel
+          {...panelProps(FRAME)}
+          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
+          onSubmit={values => {
+            onCompleteEditListingWizardTab(tab, values);
+          }}
+        />
+      );
+    }
+    case SIZE: {
+      const submitButtonTranslationKey = isNewListingFlow
+        ? 'EditListingWizard.saveNewSize'
+        : 'EditListingWizard.saveEditSize';
+      return (
+        <EditListingSizePanel
+          {...panelProps(SIZE)}
+          submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
+          onSubmit={values => {
+            onCompleteEditListingWizardTab(tab, values);
+          }}
+        />
+      );
+    }
+
+    case MEDIUM: {
+      const submitButtonTranslationKey = isNewListingFlow
+        ? 'EditListingWizard.saveNewMedium'
+        : 'EditListingWizard.saveEditMedium';
+      return (
+        <EditListingMediumPanel
+          {...panelProps(MEDIUM)}
           submitButtonText={intl.formatMessage({ id: submitButtonTranslationKey })}
           onSubmit={values => {
             onCompleteEditListingWizardTab(tab, values);

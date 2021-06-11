@@ -301,7 +301,7 @@ released as a minor update 6.2.0.
 ## [v4.4.0] 2020-03-25
 
 - [add] Search result sorting [#1277](https://github.com/sharetribe/ftw-daily/pull/1277)
-- [change] Move category and amenities search filters from primary filters to secondary filters.
+- [change] Move Orientation and amenities search filters from primary filters to secondary filters.
   [#1275](https://github.com/sharetribe/ftw-daily/pull/1275)
 
 [v4.4.0]: https://github.com/sharetribe/flex-template-web/compare/v4.3.0...v4.4.0
@@ -757,7 +757,7 @@ There was also a couple of bug fixes you should check carefully:
 
 ## [v2.13.1] 2019-03-29
 
-- [add] a comment about category and amenities filters. They don't work out-of-the-box, extended
+- [add] a comment about Orientation and amenities filters. They don't work out-of-the-box, extended
   data needs a schema before it can work as a search filter.
   [#1055](https://github.com/sharetribe/flex-template-web/pull/1055)
 - [fix] EditListingWizard: currentUser was null when the EditListingPage got reloaded causing

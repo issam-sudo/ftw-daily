@@ -51,17 +51,17 @@ exports[`EditListingDescriptionForm matches snapshot 1`] = `
     />
   </div>
   <div
-    className="root category"
+    className="root Orientation"
   >
     <label
-      htmlFor="category"
+      htmlFor="Orientation"
     >
-      EditListingDescriptionForm.categoryLabel
+      EditListingDescriptionForm.OrientationLabel
     </label>
     <select
       className="select"
-      id="category"
-      name="category"
+      id="Orientation"
+      name="Orientation"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -71,7 +71,7 @@ exports[`EditListingDescriptionForm matches snapshot 1`] = `
         disabled={true}
         value=""
       >
-        EditListingDescriptionForm.categoryPlaceholder
+        EditListingDescriptionForm.OrientationPlaceholder
       </option>
       <option
         key="cat1"

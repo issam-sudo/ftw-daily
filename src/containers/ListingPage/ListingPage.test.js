@@ -28,18 +28,18 @@ const noop = () => null;
 
 const filterConfig = [
   {
-    id: 'category',
-    label: 'Category',
+    id: 'Orientation',
+    label: 'Orientation',
     type: 'SelectSingleFilter',
     group: 'secondary',
-    queryParamName: 'pub_category',
+    queryParamName: 'pub_Orientation',
     config: {
       options: [{ key: 'cat1', label: 'Cat 1' }, { key: 'cat2', label: 'Cat 2' }],
     },
   },
   {
     id: 'amenities',
-    label: 'Amenities',
+    label: 'Collection',
     type: 'SelectMultipleFilter',
     group: 'secondary',
     queryParamName: 'pub_amenities',

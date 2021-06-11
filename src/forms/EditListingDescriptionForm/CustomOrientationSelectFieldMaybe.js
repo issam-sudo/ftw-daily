@@ -4,29 +4,29 @@ import { FieldSelect } from '../../components';
 
 import css from './EditListingDescriptionForm.module.css';
 
-const CustomCategorySelectFieldMaybe = props => {
+const CustomOrientationSelectFieldMaybe = props => {
   const { name, id, categories, intl } = props;
-  const categoryLabel = intl.formatMessage({
-    id: 'EditListingDescriptionForm.categoryLabel',
+  const OrientationLabel = intl.formatMessage({
+    id: 'EditListingDescriptionForm.OrientationLabel',
   });
-  const categoryPlaceholder = intl.formatMessage({
-    id: 'EditListingDescriptionForm.categoryPlaceholder',
+  const OrientationPlaceholder = intl.formatMessage({
+    id: 'EditListingDescriptionForm.OrientationPlaceholder',
   });
-  const categoryRequired = required(
+  const OrientationRequired = required(
     intl.formatMessage({
-      id: 'EditListingDescriptionForm.categoryRequired',
+      id: 'EditListingDescriptionForm.OrientationRequired',
     })
   );
   return categories ? (
     <FieldSelect
-      className={css.category}
+      className={css.Orientation}
       name={name}
       id={id}
-      label={categoryLabel}
-      validate={categoryRequired}
+      label={OrientationLabel}
+      validate={OrientationRequired}
     >
       <option disabled value="">
-        {categoryPlaceholder}
+        {OrientationPlaceholder}
       </option>
       {categories.map(c => (
         <option key={c.key} value={c.key}>
@@ -37,4 +37,4 @@ const CustomCategorySelectFieldMaybe = props => {
   ) : null;
 };
 
-export default CustomCategorySelectFieldMaybe;
+export default CustomOrientationSelectFieldMaybe;

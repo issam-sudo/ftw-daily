@@ -75,7 +75,7 @@ const CreateStripeAccountFields = props => {
   }
 
   const hasMCC = values && values.businessProfileMCC;
-  // Use default merchant category code (MCC) from stripe-config.js
+  // Use default merchant Orientation code (MCC) from stripe-config.js
   if (!hasMCC && config.stripe.defaultMCC) {
     const defaultBusinessProfileMCC = config.stripe.defaultMCC;
     form.change('businessProfileMCC', defaultBusinessProfileMCC);

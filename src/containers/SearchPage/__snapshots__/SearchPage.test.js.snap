@@ -62,33 +62,29 @@ exports[`SearchPageComponent matches snapshot 1`] = `
               "keywords",
             ],
             "type": "KeywordFilter",
-          },
-          Object {
+          },     Object {
             "config": Object {
               "options": Array [
                 Object {
-                  "key": "smoke",
-                  "label": "Smoke",
+                  "key": "Horizontal",
+                  "label": "Horizontal",
                 },
                 Object {
-                  "key": "electric",
-                  "label": "Electric",
+                  "key": "Vertical",
+                  "label": "Vertical",
                 },
                 Object {
-                  "key": "wood",
-                  "label": "Wood",
+                  "key": "Square",
+                  "label": "Square",
                 },
-                Object {
-                  "key": "other",
-                  "label": "Other",
-                },
+              
               ],
             },
             "group": "secondary",
-            "id": "category",
-            "label": "Category",
+            "id": "Orientation",
+            "label": "Orientation",
             "queryParamNames": Array [
-              "pub_category",
+              "pub_Orientation",
             ],
             "type": "SelectSingleFilter",
           },
@@ -132,7 +128,7 @@ exports[`SearchPageComponent matches snapshot 1`] = `
             },
             "group": "secondary",
             "id": "amenities",
-            "label": "Amenities",
+            "label": "Collection",
             "queryParamNames": Array [
               "pub_amenities",
             ],

@@ -56,8 +56,8 @@ export const filters = [
     // Note: unlike most prices this is not handled in subunits
     config: {
       min: 0,
-      max: 1000,
-      step: 5,
+      max: 10000,
+      step: 1,
     },
   },
   {
@@ -74,27 +74,76 @@ export const filters = [
     config: {},
   },
   {
-    id: 'category',
-    label: 'Category',
+    id: 'Orientation',
+    label: 'Orientation',
     type: 'SelectSingleFilter',
-    group: 'secondary',
-    queryParamNames: ['pub_category'],
+    group: 'primary',
+    queryParamNames: ['pub_Orientation'],
     config: {
+      searchMode: 'has_all',
       // "key" is the option you see in Flex Console.
       // "label" is set here for the UI only.
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
-        { key: 'smoke', label: 'Smoke' },
-        { key: 'electric', label: 'Electric' },
-        { key: 'wood', label: 'Wood' },
-        { key: 'other', label: 'Other' },
+        { key: 'Horizontal', label: 'Horizontal' },
+        { key: 'Vertical', label: 'Vertical' },
+        { key: 'Square', label: 'Square' },
+ 
+      ],
+    },
+  },
+  {
+    id: 'frame',
+    label: 'Frame',
+    type: 'SelectSingleFilter',
+    group: 'primary',
+    queryParamNames: ['pub_frame'],
+    config: {
+      searchMode: 'has_any',
+      options: [
+        { key: 'Framed', label: 'Framed' },
+        { key: 'Unframed', label: 'Unframed' },
+ 
+      ],
+    },
+  },
+  {
+    id: 'medium',
+    label: 'Medium',
+    type: 'SelectSingleFilter',
+    group: 'primary',
+    queryParamNames: ['pub_medium'],
+    config: {
+      searchMode: 'has_any',
+      options: [
+        { key: 'Oil', label: 'Oil' },
+        { key: 'Acrylic', label: 'Acrylic' },
+        { key: 'Watercolor', label: 'Watercolor' },
+      ],
+    },
+  },
+  {
+    id: 'size',
+    label: 'Size',
+    type: 'SelectSingleFilter',
+    group: 'primary',
+    queryParamNames: ['pub_size'],
+    config: {
+      searchMode: 'has_any',
+      options: [
+        { key: 'Mini (less than 10”)', label: 'Mini (less than 10”)' },
+        { key: 'Small (10” to 20”)', label: 'Small (10” to 20”)' },
+        { key: 'Medium (20” to 40”)', label: 'Medium (20” to 40”)' },
+        { key: 'Large (40” to 60”)', label: 'Large (40” to 60”)' },
+        { key: 'Extra Large (over 60”)', label: 'Extra Large (over 60”)' },
+  
       ],
     },
   },
   {
     id: 'amenities',
-    label: 'Amenities',
+    label: 'Collection',
     type: 'SelectMultipleFilter',
     group: 'primary',
     queryParamNames: ['pub_amenities'],
@@ -109,36 +158,100 @@ export const filters = [
       // to make filter customizations a bit easier.
       options: [
         {
-          key: 'towels',
-          label: 'Towels',
+          key: 'Abstract',
+          label: 'Abstract',
         },
         {
-          key: 'bathroom',
-          label: 'Bathroom',
+          key: 'Landscape',
+          label: 'Landscape',
         },
         {
-          key: 'swimming_pool',
-          label: 'Swimming pool',
+          key: 'Fine Art',
+          label: 'Fine Art',
         },
         {
-          key: 'own_drinks',
-          label: 'Own drinks allowed',
+          key: 'Modern',
+          label: 'Modern',
         },
         {
-          key: 'jacuzzi',
-          label: 'Jacuzzi',
+          key: 'Beach',
+          label: 'Beach',
         },
         {
-          key: 'audiovisual_entertainment',
-          label: 'Audiovisual entertainment',
+          key: 'Impressionist',
+          label: 'Impressionist',
         },
         {
-          key: 'barbeque',
-          label: 'Barbeque',
+          key: 'Ocean',
+          label: 'Ocean',
         },
         {
-          key: 'own_food_allowed',
-          label: 'Own food allowed',
+          key: 'Water',
+          label: 'Water',
+        },
+        {
+          key: 'Nature',
+          label: 'Nature',
+        },
+        {
+          key: 'Mountains',
+          label: 'Mountains',
+        },
+        {
+          key: 'Portraits',
+          label: 'Portraits',
+        },
+        {
+          key: 'Plein Air',
+          label: 'Plein Air',
+        },
+        {
+          key: 'Clouds',
+          label: 'Clouds',
+        },
+        {
+          key: 'Flowers',
+          label: 'Flowers',
+        },
+        {
+          key: 'Winter scenes',
+          label: 'Winter scenes',
+        },
+        {
+          key: 'Birds',
+          label: 'Birds',
+        },
+        {
+          key: 'Still life',
+          label: 'Still life',
+        },
+        {
+          key: 'Colorful abstract',
+          label: 'Colorful abstract',
+        },
+        {
+          key: 'Skulls',
+          label: 'Skulls',
+        },
+        {
+          key: 'Nudes',
+          label: 'Nudes',
+        },
+        {
+          key: 'Black and white abstract',
+          label: 'Black and white abstract',
+        },
+        {
+          key: 'Abstract landscapes',
+          label: 'Abstract landscapes',
+        },
+        {
+          key: 'Animals',
+          label: 'Animals',
+        },
+        {
+          key: 'Fruit',
+          label: 'Fruit',
         },
       ],
     },

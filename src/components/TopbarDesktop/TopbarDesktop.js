@@ -42,7 +42,52 @@ const TopbarDesktop = props => {
   const isAuthenticatedOrJustHydrated = isAuthenticated || !mounted;
 
   const classes = classNames(rootClassName || css.root, className);
+  var hasLng  =localStorage.getItem('lng');
+  function chooseLanguageFR(){
+ 
 
+      localStorage.setItem('lng', 'fr')
+       hasLng =  "FR"
+      location.reload()
+ 
+  }
+  function chooseLanguageDE(){
+ 
+
+    localStorage.setItem('lng', 'de')
+     hasLng =  "DE"
+    location.reload()
+
+}
+
+function chooseLanguageEN(){
+ 
+
+  localStorage.setItem('lng', 'en')
+   hasLng =  "EN"
+  location.reload()
+
+}
+
+function chooseLanguageES(){
+ 
+
+  localStorage.setItem('lng', 'es')
+   hasLng =  "ES"
+  location.reload()
+
+}
+
+function chooseLanguageFR(){
+ 
+
+  localStorage.setItem('lng', 'fr')
+   hasLng =  "FR"
+  location.reload()
+
+}
+
+ 
   const search = (
     <TopbarSearchForm
       className={css.searchLink}
@@ -54,7 +99,9 @@ const TopbarDesktop = props => {
 
   const notificationDot = notificationCount > 0 ? <div className={css.notificationDot} /> : null;
 
+
   const inboxLink = authenticatedOnClientSide ? (
+    
     <NamedLink
       className={css.inboxLink}
       name="InboxPage"
@@ -64,9 +111,42 @@ const TopbarDesktop = props => {
         <FormattedMessage id="TopbarDesktop.inbox" />
         {notificationDot}
       </span>
+   
     </NamedLink>
+    
   ) : null;
 
+  const artLink = authenticatedOnClientSide ? (
+    
+    <NamedLink
+      className={css.inboxLink}
+      name="SearchPage"
+ 
+    >
+      <span className={css.inbox}>
+        <FormattedMessage id="TopbarMobileMenu.artLink" />
+        {notificationDot}
+      </span>
+   
+    </NamedLink>
+    
+  ) : null;
+
+  const myArtLink = authenticatedOnClientSide ? (
+    
+    <NamedLink
+      className={css.inboxLink}
+      name="ManageListingsPage"
+ 
+    >
+      <span className={css.inbox}>
+        <FormattedMessage id="TopbarMobileMenu.myArtLink" />
+        {notificationDot}
+      </span>
+   
+    </NamedLink>
+    
+  ) : null;
   const currentPageClass = page => {
     const isAccountSettingsPage =
       page === 'AccountSettingsPage' && ACCOUNT_SETTINGS_PAGES.includes(currentPage);
@@ -79,6 +159,7 @@ const TopbarDesktop = props => {
         <Avatar className={css.avatar} user={currentUser} disableProfileLink />
       </MenuLabel>
       <MenuContent className={css.profileMenuContent}>
+        
         <MenuItem key="ManageListingsPage">
           <NamedLink
             className={classNames(css.yourListingsLink, currentPageClass('ManageListingsPage'))}
@@ -113,9 +194,58 @@ const TopbarDesktop = props => {
           </InlineTextButton>
         </MenuItem>
       </MenuContent>
+
+      
     </Menu>
   ) : null;
+  const profileMenu1 = authenticatedOnClientSide ? (
+    <Menu>
+      <MenuLabel className={css.profileMenuLabel , css.lngList} isOpenClassName={css.profileMenuIsOpen}>
+       <span>{hasLng}</span> 
+      </MenuLabel>
+      <MenuContent className={css.profileMenuContent}>
+        
+        <MenuItem key="ProfileSettingsPage">
+          <a
+          onClick={chooseLanguageFR}   className={classNames(css.profileSettingsLink, currentPageClass('ProfileSettingsPage'))}
+            name="ProfileSettingsPage"
+          >
+            <span className={css.menuItemBorder} />
+              FR
+          </a>
+        </MenuItem>
+        <MenuItem key="AccountSettingsPage">
+        <a
+          onClick={chooseLanguageEN}   className={classNames(css.profileSettingsLink, currentPageClass('ProfileSettingsPage'))}
+            name="ProfileSettingsPage"
+          >
+            <span className={css.menuItemBorder} />
+         EN
+          </a>
+        </MenuItem>
+        <MenuItem key="AccountSettingsPage1">
+        <a
+          onClick={chooseLanguageES}   className={classNames(css.profileSettingsLink, currentPageClass('ProfileSettingsPage'))}
+            name="ProfileSettingsPage"
+          >
+            <span className={css.menuItemBorder} />
+          ES
+          </a>
+        </MenuItem>
+        <MenuItem key="AccountSettingsPage2">
+        <a
+          onClick={chooseLanguageDE}   className={classNames(css.profileSettingsLink, currentPageClass('ProfileSettingsPage'))}
+            name="ProfileSettingsPage"
+          >
+            <span className={css.menuItemBorder} />
+            DE
+          </a>
+        </MenuItem>
+      </MenuContent>
 
+      
+    </Menu>
+  ) : null;
   const signupLink = isAuthenticatedOrJustHydrated ? null : (
     <NamedLink name="SignupPage" className={css.signupLink}>
       <span className={css.signup}>
@@ -147,10 +277,14 @@ const TopbarDesktop = props => {
           <FormattedMessage id="TopbarDesktop.createListing" />
         </span>
       </NamedLink>
+      {artLink}
+      {myArtLink}
       {inboxLink}
+      {profileMenu1}
       {profileMenu}
       {signupLink}
       {loginLink}
+   
     </nav>
   );
 };

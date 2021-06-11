@@ -228,7 +228,7 @@ const StyleguidePage = props => {
             Styleguide
           </NamedLink>
         </h1>
-        <h2 className={css.withMargin}>Select category:</h2>
+        <h2 className={css.withMargin}>Select Orientation:</h2>
         <Nav groups={groups} selectedGroup={selectedGroup} />
       </div>
       <div className={css.main}>

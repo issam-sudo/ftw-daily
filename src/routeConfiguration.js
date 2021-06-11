@@ -69,7 +69,7 @@ const routeConfiguration = () => {
       component: AboutPage,
     },
     {
-      path: '/s',
+      path: '/art',
       name: 'SearchPage',
       component: SearchPage,
       loadData: pageDataLoadingAPI.SearchPage.loadData,

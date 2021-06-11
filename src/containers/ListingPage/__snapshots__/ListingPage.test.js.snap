@@ -124,7 +124,7 @@ exports[`ListingPage matches snapshot 1`] = `
             className="mainContent"
           >
             <SectionHeading
-              category={null}
+              Orientation={null}
               formattedPrice={55}
               hostLink={
                 <NamedLink

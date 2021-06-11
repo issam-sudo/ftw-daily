@@ -7,10 +7,16 @@ import { lazyLoadWithDimensions } from '../../util/contextHelpers';
 import { NamedLink } from '../../components';
 
 import css from './SectionLocations.module.css';
+ 
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+  return images;
+}
 
-import helsinkiImage from './images/location_helsinki.jpg';
-import rovaniemiImage from './images/location_rovaniemi.jpg';
-import rukaImage from './images/location_ruka.jpg';
+const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
+
+ 
 
 class LocationImage extends Component {
   render() {
@@ -18,17 +24,21 @@ class LocationImage extends Component {
     return <img alt={alt} {...rest} />;
   }
 }
+
+
 const LazyImage = lazyLoadWithDimensions(LocationImage);
 
 const locationLink = (name, image, searchQuery) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
+    
     <NamedLink name="SearchPage" to={{ search: searchQuery }} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
-          <LazyImage src={image} alt={name} className={css.locationImage} />
+          <LazyImage src={images[name+'.jpg']?.default} alt={name} className={css.locationImage} />
         </div>
       </div>
+ 
       <div className={css.linkText}>
         <FormattedMessage
           id="SectionLocations.listingsInLocation"
@@ -43,7 +53,13 @@ const SectionLocations = props => {
   const { rootClassName, className } = props;
 
   const classes = classNames(rootClassName || css.root, className);
-  const list  = ['towels' , 'bathroom'   ]
+  const list  = ['Abstract' , 'Landscape', 'Fine Art',
+   'Modern', 'Beach', 'Impressionist', 'Ocean',
+    'Water', 'Nature', 'Mountains', 'Portraits',
+     'Plein Air', 'Clouds' , 'Flowers'   , 'Winter scenes'   ,
+      'Birds', 'Still life','Colorful abstract', 'Skulls',
+      'Nudes', 'Black and white abstract','Abstract landscapes','Animals','Fruit'    ]
+ 
   return ( 
    
     <div className={classes}>
@@ -51,13 +67,13 @@ const SectionLocations = props => {
       <FormattedMessage id="SectionLocations.title" />
     </div>
     <div for className={css.locations}>
-  
+ 
     {
       
       list.map((item, index) => (
       locationLink(
-        'Helsinki',
-        helsinkiImage,
+        list[index],
+        list[index],
         '?pub_amenities=has_all%3A'+list[index]
       ))
       )}

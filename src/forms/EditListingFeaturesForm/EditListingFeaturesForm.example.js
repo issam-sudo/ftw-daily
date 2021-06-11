@@ -8,7 +8,7 @@ const initialValues = { [NAME]: initialValueArray };
 const filterConfig = [
   {
     id: 'amenities',
-    label: 'Amenities',
+    label: 'Collection',
     type: 'SelectMultipleFilter',
     group: 'secondary',
     queryParamNames: ['pub_amenities'],
@@ -38,7 +38,7 @@ export const Amenities = {
     name: NAME,
     onSubmit: values => console.log('EditListingFeaturesForm submit:', values),
     initialValues: initialValues,
-    saveActionMsg: 'Save amenities',
+    saveActionMsg: 'Save collection',
     updated: false,
     updateInProgress: false,
     disabled: false,

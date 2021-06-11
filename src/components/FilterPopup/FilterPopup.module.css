@@ -72,6 +72,9 @@
 
 .popupSize {
   padding: 15px 30px 17px 30px;
+  overflow-y: auto;
+  overflow-x: auto;
+  max-height: 238px;
 }
 
 .isOpen {

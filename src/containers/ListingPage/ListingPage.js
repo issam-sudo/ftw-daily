@@ -52,7 +52,9 @@ import SectionHostMaybe from './SectionHostMaybe';
 import SectionRulesMaybe from './SectionRulesMaybe';
 import SectionMapMaybe from './SectionMapMaybe';
 import css from './ListingPage.module.css';
-
+import SectionFrame from './SectionFrame';
+import SectionSize from './SectionSize';
+import SectionMedium from './SectionMedium';
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
 
 const { UUID } = sdkTypes;
@@ -70,7 +72,7 @@ const priceData = (price, intl) => {
   return {};
 };
 
-const categoryLabel = (categories, key) => {
+const OrientationLabel = (categories, key) => {
   const cat = categories.find(c => c.key === key);
   return cat ? cat.label : key;
 };
@@ -377,11 +379,15 @@ export class ListingPageComponent extends Component {
     );
 
     const amenityOptions = findOptionsForSelectFilter('amenities', filterConfig);
-    const categoryOptions = findOptionsForSelectFilter('category', filterConfig);
-    const category =
-      publicData && publicData.category ? (
+    const OrientationOptions = findOptionsForSelectFilter('Orientation', filterConfig);
+    const frameOptions = findOptionsForSelectFilter('frame',filterConfig );
+    const sizeOptions = findOptionsForSelectFilter('size',filterConfig );
+    const mediumOptions = findOptionsForSelectFilter('medium',filterConfig );
+    
+    const Orientation =
+      publicData && publicData.Orientation ? (
         <span>
-          {categoryLabel(categoryOptions, publicData.category)}
+          {OrientationLabel(OrientationOptions, publicData.Orientation)}
           <span className={css.separator}>•</span>
         </span>
       ) : null;
@@ -407,6 +413,7 @@ export class ListingPageComponent extends Component {
           <LayoutWrapperTopbar>{topbar}</LayoutWrapperTopbar>
           <LayoutWrapperMain>
             <div>
+
               <SectionImages
                 title={title}
                 listing={currentListing}
@@ -429,7 +436,7 @@ export class ListingPageComponent extends Component {
                     priceTitle={priceTitle}
                     formattedPrice={formattedPrice}
                     richTitle={richTitle}
-                    category={category}
+                    Orientation={Orientation}
                     hostLink={hostLink}
                     showContactUser={showContactUser}
                     onContactUser={this.onContactUser}
@@ -442,7 +449,12 @@ export class ListingPageComponent extends Component {
                     publicData={publicData}
                     listingId={currentListing.id}
                   />
+              
                   <SectionReviews reviews={reviews} fetchReviewsError={fetchReviewsError} />
+                  <SectionFrame publicData={publicData} options={frameOptions} />
+                  <SectionSize publicData={publicData} options={sizeOptions} />
+                  <SectionMedium publicData={publicData} options={mediumOptions} />
+
                   <SectionHostMaybe
                     title={title}
                     listing={currentListing}
