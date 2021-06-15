@@ -17,7 +17,7 @@
  * defined. This way we get the validation errors only in the most
  * specific place and avoid duplicate errros.
  */
-import {
+ import {
   arrayOf,
   bool,
   func,
@@ -64,7 +64,7 @@ propTypes.route = shape({
   path: string.isRequired,
   exact: bool,
   strict: bool,
-  component: oneOfType([object, func]).isRequired,
+  component: func.isRequired,
   loadData: func,
 });
 
@@ -153,8 +153,8 @@ propTypes.user = shape({
 });
 
 export const LISTING_STATE_DRAFT = 'draft';
-export const LISTING_STATE_PENDING_APPROVAL = 'closed';
-export const LISTING_STATE_PUBLISHED = 'closed';
+export const LISTING_STATE_PENDING_APPROVAL = 'pendingApproval';
+export const LISTING_STATE_PUBLISHED = 'published';
 export const LISTING_STATE_CLOSED = 'closed';
 
 const LISTING_STATES = [

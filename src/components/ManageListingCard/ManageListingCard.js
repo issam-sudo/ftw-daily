@@ -273,7 +273,7 @@ export const ManageListingCardComponent = props => {
               { listingTitle: title }
             )}
           >
-            <button
+   {/*          <button
               className={css.openListingButton}
               disabled={!!actionsInProgressListingId}
               onClick={event => {
@@ -285,7 +285,7 @@ export const ManageListingCardComponent = props => {
               }}
             >
               <FormattedMessage id="ManageListingCard.openListing" />
-            </button>
+            </button> */}
           </Overlay>
         ) : null}
         {isPendingApproval ? (

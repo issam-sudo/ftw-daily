@@ -2,11 +2,13 @@
 
 .mobileInputRoot {
   width: 100%;
+  border: none;
 }
 
 .desktopInputRoot {
   height: var(--topbarHeightDesktop);
   padding-left: 10px;
+  border: none;
 }
 
 .mobileIcon {
@@ -148,3 +150,21 @@
   );
   max-width: 434px;
 }
+
+.iconSearch{
+  justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-left: 5px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--marketplaceColor);
+    
+  &:hover,
+  &:focus {
+    border-bottom-color: var(--marketplaceColor);
+    outline: none;
+    border-bottom-width: 4px;
+  }
+}
+ 

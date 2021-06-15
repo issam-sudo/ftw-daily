@@ -4,7 +4,7 @@ import { Form as FinalForm, Field } from 'react-final-form';
 import classNames from 'classnames';
 import { intlShape, injectIntl } from '../../util/reactIntl';
 import { Form, LocationAutocompleteInput } from '../../components';
-
+ 
 import css from './TopbarSearchForm.module.css';
 
 const identity = v => v;
@@ -26,6 +26,7 @@ class TopbarSearchFormComponent extends Component {
 
   render() {
     return (
+    
       <FinalForm onKeyUp={this.onSubmit}
         {...this.props}
    
@@ -39,17 +40,23 @@ class TopbarSearchFormComponent extends Component {
           } = formRenderProps;
           const classes = classNames(rootClassName, className);
           return (
-            <Form className={classes}   >
+            
+            <Form className={classes}  onSubmit={handleSubmit} >
               <Field
                 name="keywords"
                 render={({ input, meta }) => {
+ 
                   return (
-                    <input
-                      onKeyUp={handleSubmit}
-                      className={
+                   <div className={  isMobile  ? css.iconSearch   : css.iconSearch  } >
+                      
+            
+ 
+                    <input 
+                      onClick={handleSubmit}
+                       className={
                         isMobile
-                          ? css.mobileInputRoot
-                          : css.desktopInputRoot
+                          ? css.mobileInputRoot  
+                          : css.desktopInputRoot  
                       }
                       {...input}
                       id="keyword-search"
@@ -60,9 +67,14 @@ class TopbarSearchFormComponent extends Component {
                       })}
                       autoComplete="off"
                     />
+                        <a  onClick={handleSubmit} >
+                     
+                        <img src="https://img.icons8.com/pastel-glyph/35/cda13e/search--v1.png"/></a>  
+                    </div>
                   );
                 }}
               />
+           
             </Form>
           );
         }}

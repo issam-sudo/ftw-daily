@@ -291,7 +291,7 @@ if (cspEnabled) {
   });
 }
 
-app.listen(PORT, () => {
+app.listen(3200, () => {
   const mode = dev ? 'development' : 'production';
   console.log(`Listening to port ${PORT} in ${mode} mode`);
   if (dev) {

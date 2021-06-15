@@ -32,8 +32,8 @@ export const RETRIEVE_PAYMENT_INTENT_ERROR = 'app/stripe/RETRIEVE_PAYMENT_INTENT
 // ================ Reducer ================ //
 
 const initialState = {
-  confirmCardPaymentInProgress: false,
-  confirmCardPaymentError: null,
+  handleCardPaymentInProgress: false,
+  handleCardPaymentError: null,
   handleCardSetupInProgress: false,
   handleCardSetupError: null,
   paymentIntent: null,
@@ -95,14 +95,14 @@ export default function reducer(state = initialState, action = {}) {
     case HANDLE_CARD_PAYMENT_REQUEST:
       return {
         ...state,
-        confirmCardPaymentError: null,
-        confirmCardPaymentInProgress: true,
+        handleCardPaymentError: null,
+        handleCardPaymentInProgress: true,
       };
     case HANDLE_CARD_PAYMENT_SUCCESS:
-      return { ...state, paymentIntent: payload, confirmCardPaymentInProgress: false };
+      return { ...state, paymentIntent: payload, handleCardPaymentInProgress: false };
     case HANDLE_CARD_PAYMENT_ERROR:
       console.error(payload);
-      return { ...state, confirmCardPaymentError: payload, confirmCardPaymentInProgress: false };
+      return { ...state, handleCardPaymentError: payload, handleCardPaymentInProgress: false };
 
     case HANDLE_CARD_SETUP_REQUEST:
       return {
@@ -119,8 +119,8 @@ export default function reducer(state = initialState, action = {}) {
     case CLEAR_HANDLE_CARD_PAYMENT:
       return {
         ...state,
-        confirmCardPaymentInProgress: false,
-        confirmCardPaymentError: null,
+        handleCardPaymentInProgress: false,
+        handleCardPaymentError: null,
         paymentIntent: null,
       };
 
@@ -151,16 +151,16 @@ export const stripeAccountClearError = () => ({
   type: STRIPE_ACCOUNT_CLEAR_ERROR,
 });
 
-export const confirmCardPaymentRequest = () => ({
+export const handleCardPaymentRequest = () => ({
   type: HANDLE_CARD_PAYMENT_REQUEST,
 });
 
-export const confirmCardPaymentSuccess = payload => ({
+export const handleCardPaymentSuccess = payload => ({
   type: HANDLE_CARD_PAYMENT_SUCCESS,
   payload,
 });
 
-export const confirmCardPaymentError = payload => ({
+export const handleCardPaymentError = payload => ({
   type: HANDLE_CARD_PAYMENT_ERROR,
   payload,
   error: true,
@@ -240,35 +240,35 @@ export const retrievePaymentIntent = params => dispatch => {
     });
 };
 
-export const confirmCardPayment = params => dispatch => {
+export const handleCardPayment = params => dispatch => {
   // It's required to use the same instance of Stripe as where the card has been created
   // so that's why Stripe needs to be passed here and we can't create a new instance.
-  const { stripe, paymentParams, stripePaymentIntentClientSecret } = params;
+  const { stripe, card, paymentParams, stripePaymentIntentClientSecret } = params;
   const transactionId = params.orderId;
 
-  dispatch(confirmCardPaymentRequest());
+  dispatch(handleCardPaymentRequest());
 
-  // When using default payment method paymentParams.payment_method is
-  // already set Flex API side, when request-payment transition is made
-  // so there's no need for paymentParams
-  const args = paymentParams
-    ? [stripePaymentIntentClientSecret, paymentParams]
+  // When using default payment method, card (aka Stripe Element) is not needed.
+  // We also set paymentParams.payment_method already in Flex API side,
+  // when request-payment transition is made - so there's no need for paymentParams
+  const args = card
+    ? [stripePaymentIntentClientSecret, card, paymentParams]
     : [stripePaymentIntentClientSecret];
 
   return stripe
-    .confirmCardPayment(...args)
+    .handleCardPayment(...args)
     .then(response => {
       if (response.error) {
         return Promise.reject(response);
       } else {
-        dispatch(confirmCardPaymentSuccess(response));
+        dispatch(handleCardPaymentSuccess(response));
         return { ...response, transactionId };
       }
     })
     .catch(err => {
       // Unwrap Stripe error.
       const e = err.error || storableError(err);
-      dispatch(confirmCardPaymentError(e));
+      dispatch(handleCardPaymentError(e));
 
       // Log error
       const containsPaymentIntent = err.error && err.error.payment_intent;

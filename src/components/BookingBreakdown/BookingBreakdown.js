@@ -124,7 +124,7 @@ export const BookingBreakdownComponent = props => {
         intl={intl}
       />
 
-      <LineItemTotalPrice transaction={transaction} isProvider={isProvider} intl={intl} />
+      <LineItemTotalPrice   unitType={unitType}   transaction={transaction} isProvider={isProvider} intl={intl} />
 
       {hasCommissionLineItem ? (
         <span className={css.feeInfo}>

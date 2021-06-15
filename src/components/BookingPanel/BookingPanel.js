@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl';
-import { arrayOf, array, bool, func, node, oneOfType, shape, string } from 'prop-types';
+import { arrayOf, bool, func, node, oneOfType, shape, string } from 'prop-types';
 import classNames from 'classnames';
 import omit from 'lodash/omit';
 import { propTypes, LISTING_STATE_CLOSED, LINE_ITEM_NIGHT, LINE_ITEM_DAY } from '../../util/types';
@@ -65,10 +65,6 @@ const BookingPanel = props => {
     history,
     location,
     intl,
-    onFetchTransactionLineItems,
-    lineItems,
-    fetchLineItemsInProgress,
-    fetchLineItemsError,
   } = props;
 
   const price = listing.attributes.price;
@@ -126,14 +122,9 @@ const BookingPanel = props => {
             unitType={unitType}
             onSubmit={onSubmit}
             price={price}
-            listingId={listing.id}
             isOwnListing={isOwnListing}
             timeSlots={timeSlots}
             fetchTimeSlotsError={fetchTimeSlotsError}
-            onFetchTransactionLineItems={onFetchTransactionLineItems}
-            lineItems={lineItems}
-            fetchLineItemsInProgress={fetchLineItemsInProgress}
-            fetchLineItemsError={fetchLineItemsError}
           />
         ) : null}
       </ModalInMobile>
@@ -173,8 +164,6 @@ BookingPanel.defaultProps = {
   unitType: config.bookingUnitType,
   timeSlots: null,
   fetchTimeSlotsError: null,
-  lineItems: null,
-  fetchLineItemsError: null,
 };
 
 BookingPanel.propTypes = {
@@ -191,10 +180,6 @@ BookingPanel.propTypes = {
   onManageDisableScrolling: func.isRequired,
   timeSlots: arrayOf(propTypes.timeSlot),
   fetchTimeSlotsError: propTypes.error,
-  onFetchTransactionLineItems: func.isRequired,
-  lineItems: array,
-  fetchLineItemsInProgress: bool.isRequired,
-  fetchLineItemsError: propTypes.error,
 
   // from withRouter
   history: shape({
